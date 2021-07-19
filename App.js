@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
+import { Card, Button, Input } from "react-native-elements";
 
 export default class Sample extends React.Component {
 
@@ -10,14 +11,20 @@ export default class Sample extends React.Component {
   render() {
     return (
       <View style={styles.sample1}>
-        <Text>入力してください</Text>
-        <TextInput
-          value={this.state.text1}
-          onChangeText = {(t)=>this.setState({text1:t})}
-        />
-        <Button
-          title="Entry"
-          onPress={this.entry}></Button>
+        <Card>
+          入力してください
+          <Input
+            value={this.state.text1}
+            label="text1"
+            errorMessage="error"
+            onChangeText={(t) => this.setState({ text1: t })}
+          />
+          <Button
+            style={styles.btnStyle}
+            title="Entry"
+            onPress={this.entry}
+          ></Button>
+        </Card>
       </View>
     );
   }
@@ -33,4 +40,8 @@ const styles = StyleSheet.create({
     paddingVertical: 80,
     alignItems: "center",
   },
+  btnStyle: {
+    borderRadius: 20,
+    marginTop: 30,
+  }
 });
